@@ -474,6 +474,12 @@ describe('helpers', function() {
       var expected = 'Ivan, Darrell, Lloyd';
       assertStringOutput(template, expected);
     });
+
+    it('should return same first names when not clear cache', function() {
+      var template = '{{firstName clrCache=false}}, {{firstName}}, {{firstName}}';
+      var expected = 'Ivan, Ivan, Darrell';
+      assertStringOutput(template, expected);
+    });
   });
 
   describe('lastName', function() {
@@ -490,6 +496,12 @@ describe('helpers', function() {
       var expected = 'isprowl, lsmit, twinter';
       assertStringOutput(template, expected);
     });
+    
+    it('should return same username when not clear cache', function() {
+      var template = '{{username clrCache=false}}, {{username clrCache=false}}, {{username clrCache=false}}';
+      var expected = 'isprowl, isprowl, isprowl';
+      assertStringOutput(template, expected);
+    })
 
     it('should remove whitespace characters from names', function() {
       var options = {
@@ -510,6 +522,13 @@ describe('helpers', function() {
       var expected = 'FortyFour, Conixco, Qualcore';
       assertStringOutput(template, expected);
     });
+
+    it('should return same companies when not clear cache', function() {
+      var template = '{{company clrCache=false}}, {{company clrCache=false}}, {{company clrCache=false}}';
+      var expected = 'FortyFour, FortyFour, FortyFour';
+      assertStringOutput(template, expected);
+    });
+
   });
 
   describe('tld', function() {
